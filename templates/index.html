@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #efefef;
+            height: 100vh;
+        }
+        .wrapper{
+            background: #1D1136;
+            border-radius: 10px;
+            padding: 20px;
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            text-align: center;
+        }
+        input[type=text] {
+          width: 50%;
+          padding: 12px 20px;
+          margin: 8px 0;
+          box-sizing: border-box;
+        }
+        button{
+          background: #efefef;
+          border: none;
+            border-radius: 10px;
+          color: #363636;
+          padding: 16px 32px;
+          text-decoration: none;
+          margin: 4px 2px;
+          cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <h1>Погода в реальном времени</h1>
+    <form method="POST">
+        <label for="city">Введите город: </label>
+        <br/>
+        <br/>
+        <input type="text" id="city" name="city" required>
+        <br/>
+        <br/>
+        <button type="submit">Получить результат</button>
+    </form>
+    <h2>{{ city }}</h2>
+    <div class="weather">
+        {% if weather_state == 'Snow' %}
+            Снег
+        {% elif weather_state == 'Rain' %}
+            Дождь
+        {% elif weather_state == 'Clouds' %}
+            Облачно
+        {% elif weather_state == 'Clear' %}
+            Ясно
+        {% else %}
+            {{ weather_state }}
+        {% endif %}
+        <p>Температура: {{ temperature }} градусов Цельсия</p>
+</div>
+</div>
+</body>
+</html>
